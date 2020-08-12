@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    container_name: Apache-Dubbo
+    image: openjdk:8-jdk
+ #   command: ./run.sh
+    volumes:
+      - ./dubbo-spring-boot-provider2-2.7.3.jar:/dubbo-spring-boot-provider2-2.7.3.jar
+      - ./dubbo-spring-boot-provider-2.7.3.jar:/dubbo-spring-boot-provider-2.7.3.jar
+      - ./dubbo-spring-boot-consumer-2.7.3.jar:/dubbo-spring-boot-consumer-2.7.3.jar
+      - ./iast_agent_s.jar:/iast_agent_s.jar
+      - ./run.sh:/run.sh
+    ports: 
+    - "8081:8080"
+    - "8082:9090"
+    entrypoint: "bash ./run.sh"
